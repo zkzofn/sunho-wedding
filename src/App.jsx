@@ -10,6 +10,8 @@ import naverIcon from "./assets/naver-icon.png";
 import copyIcon from "./assets/copy-icon.png";
 import LetterIcon from "./components/LetterIcon";
 import PhoneIcon from "./components/PhoneIcon";
+import ArrowDownIcon from "./components/ArrowDownIcon";
+import ArrowUpIcon from "./components/ArrowUpIcon";
 
 function App() {
   const [countdown, setCountdown] = useState({
@@ -18,7 +20,7 @@ function App() {
     minutes: 0,
     seconds: 0,
   });
-  const [showGroomAccounts, setShowGroomAccounts] = useState(true);
+  const [showGroomAccounts, setShowGroomAccounts] = useState(false);
   const [showBrideAccounts, setShowBrideAccounts] = useState(false);
 
   // 결혼식 날짜 설정 (2025년 1월 18일 오후 2시 - 한국 시간)
@@ -253,8 +255,6 @@ function App() {
                 </div>
               </div>
 
-              <div className="h-0.5 bg-primary-100 mb-7"></div>
-
               {/* 혼주 정보 */}
               <div className="flex gap-5 mb-5">
                 <div className="flex flex-col flex-1 text-center gap-6">
@@ -382,7 +382,7 @@ function App() {
 
         {/* 위치 정보 */}
         <div className="w-full px-4">
-          <h2 className="font-kapakana text-5xl text-primary-600 text-center mb-5">
+          <h2 className="font-kapakana text-5xl text-primary-600 text-center mb-5 font-medium">
             Location
           </h2>
 
@@ -470,7 +470,7 @@ function App() {
         {/* 계좌번호 정보 */}
         <div className="w-full px-4">
           <div className="text-center mb-10">
-            <h2 className="font-kapakana text-5xl text-primary-600 mb-2">
+            <h2 className="font-kapakana text-5xl text-primary-600 mb-2 font-medium">
               Account
             </h2>
             <p className="font-semibold text-xl text-primary-400">
@@ -495,7 +495,17 @@ function App() {
                 <span className="font-semibold text-primary-900">
                   신랑측 계좌번호
                 </span>
-                <span className="text-primary-900">▼</span>
+                <span className="text-primary-900">
+                  {showGroomAccounts ? (
+                    <ArrowUpIcon strokeColor="#4E3F4A" width={18} height={18} />
+                  ) : (
+                    <ArrowDownIcon
+                      strokeColor="#4E3F4A"
+                      width={18}
+                      height={18}
+                    />
+                  )}
+                </span>
               </div>
             </div>
 
@@ -589,11 +599,21 @@ function App() {
                 <span className="font-semibold text-primary-900">
                   신부측 계좌번호
                 </span>
-                <span className="text-primary-900">▼</span>
+                <span className="text-primary-900">
+                  {showBrideAccounts ? (
+                    <ArrowUpIcon strokeColor="#4E3F4A" width={18} height={18} />
+                  ) : (
+                    <ArrowDownIcon
+                      strokeColor="#4E3F4A"
+                      width={18}
+                      height={18}
+                    />
+                  )}
+                </span>
               </div>
             </div>
 
-            {showGroomAccounts && (
+            {showBrideAccounts && (
               <div className="bg-primary-100 rounded-md mt-1">
                 <div className="p-5 border-b border-primary-200">
                   <div className="flex items-center justify-between">
