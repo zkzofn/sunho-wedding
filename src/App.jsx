@@ -105,11 +105,11 @@ function App() {
             {/* 이미지 위에 겹치는 텍스트 */}
             <div className="absolute inset-0 flex flex-col items-center justify-center mt-[7rem]">
               <div className="flex flex-col items-center justify-center gap-2 mb-8">
-                <div className="font-jeju text-4xl drop-shadow-lg">김병춘</div>
+                <div className="font-nanum text-4xl drop-shadow-lg">김병춘</div>
                 <div className="font-kapakana font-medium text-5xl drop-shadow-lg">
                   and
                 </div>
-                <div className="font-jeju text-4xl drop-shadow-lg">황선호</div>
+                <div className="font-nanum text-4xl drop-shadow-lg">황선호</div>
               </div>
 
               <h1 className="font-kapakana font-medium text-5xl text-primary-500 drop-shadow-lg">
