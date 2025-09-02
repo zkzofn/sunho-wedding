@@ -1,8 +1,6 @@
+/** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -22,18 +20,18 @@ export default {
           100: "#BEC0DD",
           200: "#8F9DCA",
           300: "#614CD9",
-        }
+        },
       },
       fontFamily: {
-        "kapakana": ["Kapakana", "serif"],
-        "jeju": ["JejuMyeongjo", "serif"],
-        "nanum": ["NanumMyeongjo", "serif"],
+        kapakana: ["Playfair Display", "serif"],
+        jeju: ["Noto Serif KR", "serif"],
+        nanum: ["Nanum Myeongjo", "serif"],
       },
       boxShadow: {
-        "custom": "4px 4px 8.6px 0px rgba(96, 40, 66, 0.39)",
-        "button": "2px 2px 3.3px 0px rgba(190, 160, 186, 0.15)",
-      }
+        custom: "4px 4px 8.6px 0px rgba(96, 40, 66, 0.39)",
+        button: "2px 2px 3.3px 0px rgba(190, 160, 186, 0.15)",
+      },
     },
   },
   plugins: [],
-}
+};
