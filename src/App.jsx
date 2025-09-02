@@ -62,14 +62,14 @@ function App() {
 
     switch (type) {
       case "tmap":
-        window.open(`https://tmap.co.kr/search?q=${encodedAddress}`, "_blank");
+        window.open(`tmap://search?name=${encodedAddress}`, "_blank");
         break;
+
       case "kakao":
-        window.open(
-          `https://map.kakao.com/link/search/${encodedAddress}`,
-          "_blank"
-        );
+        // 카카오맵 앱으로 검색어와 함께 연결
+        window.open(`https://place.map.kakao.com/706132423`, "_blank");
         break;
+
       case "naver":
         window.open(
           `https://map.naver.com/p/search/${encodedAddress}`,
