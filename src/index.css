@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Kapakana";
+  src: url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+}
+
+@font-face {
+  font-family: "JejuMyeongjo";
+  src: url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&display=swap");
+}
+
+body {
+  font-family: "NanumMyeongjo", serif;
+  background-color: #F3DCE1;
+  color: #4E3F4A;
+}
+
+.font-kapakana {
+  font-family: "Kapakana", serif;
+}
+
+.font-jeju {
+  font-family: "JejuMyeongjo", serif;
+}
+
+.font-nanum {
+  font-family: "NanumMyeongjo", serif;
+}
