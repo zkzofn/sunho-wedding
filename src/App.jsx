@@ -63,14 +63,14 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-primary-200 relative overflow-x-hidden">
+    <div className="min-h-screen bg-primary-200 relative overflow-x-hidden flex justify-center">
       {/* 배경 이미지 */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-primary-800 bg-opacity-80"></div>
+      <div className="absolute inset-0 z-0 flex justify-center">
+        <div className="w-full max-w-[600px] bg-primary-800 bg-opacity-80"></div>
       </div>
 
       {/* 메인 컨텐츠 */}
-      <div className="relative z-10 flex flex-col items-center gap-20 py-10 px-0 max-w-md mx-auto">
+      <div className="relative z-10 flex flex-col items-center gap-20 py-10 px-4 mx-auto" style={{ maxWidth: '600px' }}>
         
         {/* 1단락 - 메인 이미지 및 정보 */}
         <div className="flex flex-col gap-10 w-full">
