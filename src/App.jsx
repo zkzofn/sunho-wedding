@@ -64,20 +64,13 @@ function App() {
       return false;
     };
 
-    // 길게 누르기 방지 (모바일)
-    const preventLongPress = (e) => {
-      e.preventDefault();
-      return false;
-    };
+    // 길게 누르기 방지 (모바일) - CSS로 처리하므로 제거
 
     // 이벤트 리스너 추가
     document.addEventListener("contextmenu", preventContextMenu);
     document.addEventListener("dragstart", preventDrag);
     document.addEventListener("selectstart", preventSelect);
-    document.addEventListener("touchstart", preventLongPress, {
-      passive: false,
-    });
-    document.addEventListener("touchend", preventLongPress, { passive: false });
+    // touchstart/touchend는 이미지에만 개별적으로 적용
 
     // 모든 이미지에 추가 보호
     const images = document.querySelectorAll("img");
@@ -85,7 +78,7 @@ function App() {
       img.addEventListener("contextmenu", preventContextMenu);
       img.addEventListener("dragstart", preventDrag);
       img.addEventListener("selectstart", preventSelect);
-      img.addEventListener("touchstart", preventLongPress, { passive: false });
+      // touchstart 이벤트 제거 - 스크롤 방해 방지
     });
 
     return () => {
@@ -93,14 +86,12 @@ function App() {
       document.removeEventListener("contextmenu", preventContextMenu);
       document.removeEventListener("dragstart", preventDrag);
       document.removeEventListener("selectstart", preventSelect);
-      document.removeEventListener("touchstart", preventLongPress);
-      document.removeEventListener("touchend", preventLongPress);
 
       images.forEach((img) => {
         img.removeEventListener("contextmenu", preventContextMenu);
         img.removeEventListener("dragstart", preventDrag);
         img.removeEventListener("selectstart", preventSelect);
-        img.removeEventListener("touchstart", preventLongPress);
+        // touchstart 이벤트 제거됨
       });
     };
   }, []);

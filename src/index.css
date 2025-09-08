@@ -38,6 +38,14 @@ body {
   font-family: "Nanum Myeongjo", serif;
   background-color: #f3dce1 !important;
   color: #4e3f4a !important;
+  /* 모바일 줌 방지 */
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* 다크모드에서도 라이트 모드 스타일 유지 */
@@ -63,17 +71,21 @@ img {
   -moz-user-drag: none;
   -o-user-drag: none;
   user-drag: none;
+  /* 터치 스크롤 허용 */
+  touch-action: manipulation;
 }
 
 /* 갤러리 이미지는 클릭 가능하도록 예외 처리 */
 .gallery-image {
   pointer-events: auto;
   cursor: pointer;
+  /* 갤러리 이미지는 터치 액션 허용 */
+  touch-action: auto;
 }
 
-/* 갤러리 이미지가 아닌 다른 이미지들은 클릭 방지 */
+/* 갤러리 이미지가 아닌 다른 이미지들은 드래그만 방지 */
 img:not(.gallery-image) {
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 /* 텍스트 선택 방지 */

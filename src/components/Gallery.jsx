@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from "react";
 
 // 갤러리 이미지들 import
-import gallery1 from "../assets/gallery/gallery-1.png";
-import gallery2 from "../assets/gallery/gallery-2.png";
-import gallery3 from "../assets/gallery/gallery-3.png";
-import gallery4 from "../assets/gallery/gallery-4-4b3ad4.png";
-import gallery5 from "../assets/gallery/gallery-5.png";
-import gallery6 from "../assets/gallery/gallery-6.png";
-import gallery7 from "../assets/gallery/gallery-7.png";
-import gallery8 from "../assets/gallery/gallery-8.png";
-import gallery9 from "../assets/gallery/gallery-9.png";
-import gallery10 from "../assets/gallery/gallery-10-42797d.png";
-import gallery11 from "../assets/gallery/gallery-11-4a7448.png";
-import gallery12 from "../assets/gallery/gallery-12.png";
-import gallery13 from "../assets/gallery/gallery-13-4935d5.png";
-import gallery14 from "../assets/gallery/gallery-14-24ec23.png";
-import gallery15 from "../assets/gallery/gallery-15-282f85.png";
-import gallery16 from "../assets/gallery/gallery-16-7ee5d1.png";
-import gallery17 from "../assets/gallery/gallery-17-60b789.png";
-import gallery18 from "../assets/gallery/gallery-18.png";
-import gallery19 from "../assets/gallery/gallery-19-57627c.png";
-import gallery20 from "../assets/gallery/gallery-20.png";
-import gallery21 from "../assets/gallery/gallery-21-68bf7b.png";
+import gallery1 from "../assets/gallery/01.png";
+import gallery2 from "../assets/gallery/02.png";
+import gallery3 from "../assets/gallery/03.png";
+import gallery4 from "../assets/gallery/04.png";
+import gallery5 from "../assets/gallery/05.png";
+import gallery6 from "../assets/gallery/06.png";
+import gallery7 from "../assets/gallery/07.png";
+import gallery8 from "../assets/gallery/08.png";
+import gallery9 from "../assets/gallery/09.png";
+import gallery10 from "../assets/gallery/10.png";
+import gallery11 from "../assets/gallery/11.png";
+import gallery12 from "../assets/gallery/12.png";
+import gallery13 from "../assets/gallery/13.png";
+import gallery14 from "../assets/gallery/14.png";
+import gallery15 from "../assets/gallery/15.png";
+import gallery16 from "../assets/gallery/16.png";
+import gallery17 from "../assets/gallery/17.png";
+import gallery18 from "../assets/gallery/18.png";
+import gallery19 from "../assets/gallery/19.png";
+import gallery20 from "../assets/gallery/20.png";
+import gallery21 from "../assets/gallery/21.png";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -138,6 +138,8 @@ const Gallery = () => {
               src={image}
               alt={`Gallery ${index + 1}`}
               className="w-full h-full object-cover gallery-image"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         ))}
@@ -181,6 +183,8 @@ const Gallery = () => {
               src={selectedImage}
               alt={`Gallery ${currentIndex + 1}`}
               className="max-w-full max-h-full object-contain rounded-lg gallery-image"
+              loading="eager"
+              decoding="async"
             />
           </div>
 
