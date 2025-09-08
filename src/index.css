@@ -25,10 +25,75 @@
   src: url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&display=swap");
 }
 
+/* 다크모드 방지 - 항상 라이트 모드로 강제 */
+html {
+  color-scheme: light only !important;
+}
+
+html.dark {
+  color-scheme: light only !important;
+}
+
 body {
   font-family: "Nanum Myeongjo", serif;
-  background-color: #f3dce1;
-  color: #4e3f4a;
+  background-color: #f3dce1 !important;
+  color: #4e3f4a !important;
+}
+
+/* 다크모드에서도 라이트 모드 스타일 유지 */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: light only !important;
+  }
+
+  body {
+    background-color: #f3dce1 !important;
+    color: #4e3f4a !important;
+  }
+}
+
+/* 이미지 및 텍스트 다운로드/복사 방지 */
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+/* 갤러리 이미지는 클릭 가능하도록 예외 처리 */
+.gallery-image {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* 갤러리 이미지가 아닌 다른 이미지들은 클릭 방지 */
+img:not(.gallery-image) {
+  pointer-events: none;
+}
+
+/* 텍스트 선택 방지 */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 컨텍스트 메뉴 방지 */
+.no-context-menu {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .font-kapakana {

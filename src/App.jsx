@@ -12,6 +12,7 @@ import LetterIcon from "./components/LetterIcon";
 import PhoneIcon from "./components/PhoneIcon";
 import ArrowDownIcon from "./components/ArrowDownIcon";
 import ArrowUpIcon from "./components/ArrowUpIcon";
+import Gallery from "./components/Gallery";
 
 function App() {
   const [countdown, setCountdown] = useState({
@@ -22,6 +23,87 @@ function App() {
   });
   const [showGroomAccounts, setShowGroomAccounts] = useState(false);
   const [showBrideAccounts, setShowBrideAccounts] = useState(false);
+
+  // 다크모드 방지 - 항상 라이트 모드로 강제
+  useEffect(() => {
+    // HTML 요소에 light 클래스 강제 추가
+    document.documentElement.classList.add("light");
+    document.documentElement.classList.remove("dark");
+
+    // 다크모드 감지 방지
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = () => {
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
+
+  // 이미지 다운로드 및 컨텍스트 메뉴 방지
+  useEffect(() => {
+    // 우클릭 방지
+    const preventContextMenu = (e) => {
+      e.preventDefault();
+      return false;
+    };
+
+    // 드래그 방지
+    const preventDrag = (e) => {
+      e.preventDefault();
+      return false;
+    };
+
+    // 선택 방지
+    const preventSelect = (e) => {
+      e.preventDefault();
+      return false;
+    };
+
+    // 길게 누르기 방지 (모바일)
+    const preventLongPress = (e) => {
+      e.preventDefault();
+      return false;
+    };
+
+    // 이벤트 리스너 추가
+    document.addEventListener("contextmenu", preventContextMenu);
+    document.addEventListener("dragstart", preventDrag);
+    document.addEventListener("selectstart", preventSelect);
+    document.addEventListener("touchstart", preventLongPress, {
+      passive: false,
+    });
+    document.addEventListener("touchend", preventLongPress, { passive: false });
+
+    // 모든 이미지에 추가 보호
+    const images = document.querySelectorAll("img");
+    images.forEach((img) => {
+      img.addEventListener("contextmenu", preventContextMenu);
+      img.addEventListener("dragstart", preventDrag);
+      img.addEventListener("selectstart", preventSelect);
+      img.addEventListener("touchstart", preventLongPress, { passive: false });
+    });
+
+    return () => {
+      // 이벤트 리스너 제거
+      document.removeEventListener("contextmenu", preventContextMenu);
+      document.removeEventListener("dragstart", preventDrag);
+      document.removeEventListener("selectstart", preventSelect);
+      document.removeEventListener("touchstart", preventLongPress);
+      document.removeEventListener("touchend", preventLongPress);
+
+      images.forEach((img) => {
+        img.removeEventListener("contextmenu", preventContextMenu);
+        img.removeEventListener("dragstart", preventDrag);
+        img.removeEventListener("selectstart", preventSelect);
+        img.removeEventListener("touchstart", preventLongPress);
+      });
+    };
+  }, []);
 
   // 결혼식 날짜 설정 (2025년 1월 18일 오후 2시 - 한국 시간)
   const weddingDate = new Date("2025-11-29T14:00:00+09:00");
@@ -82,7 +164,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden flex justify-center">
+    <div className="min-h-screen relative overflow-x-hidden flex justify-center no-select no-context-menu">
       {/* 배경 이미지 */}
       <div className="absolute inset-0 z-0 flex justify-center">
         <div className="w-full max-w-[600px] "></div>
@@ -366,19 +448,7 @@ function App() {
         </div>
 
         {/* 갤러리 섹션 */}
-        <div className="w-full px-4">
-          <h2 className="font-kapakana text-5xl text-primary-600 text-center mb-5 font-medium">
-            Gallery
-          </h2>
-          <div className="grid grid-cols-3 gap-2">
-            {[...Array(12)].map((_, i) => (
-              <div
-                key={i}
-                className="aspect-square bg-gray-300 rounded-xl"
-              ></div>
-            ))}
-          </div>
-        </div>
+        <Gallery />
 
         {/* 위치 정보 */}
         <div className="w-full px-4">
