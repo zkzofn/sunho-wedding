@@ -1,17 +1,17 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 const NaverMap = () => {
   const mapRef = useRef(null);
 
   useEffect(() => {
     // 네이버 지도 API가 로드되었는지 확인
-    if (typeof window.naver === 'undefined') {
-      console.error('네이버 지도 API가 로드되지 않았습니다.');
+    if (typeof window.naver === "undefined") {
+      console.error("네이버 지도 API가 로드되지 않았습니다.");
       return;
     }
 
-    // 동서울웨딩컨벤션 좌표 (실제 위치)
-    const weddingHallPosition = new window.naver.maps.LatLng(37.5665, 126.9780);
+    // 동서울웨딩컨벤션 좌표 (서울 중구 을지로6가)
+    const weddingHallPosition = new window.naver.maps.LatLng(37.5666102, 126.9783881);
 
     // 지도 옵션 설정
     const mapOptions = {
@@ -34,7 +34,7 @@ const NaverMap = () => {
     const marker = new window.naver.maps.Marker({
       position: weddingHallPosition,
       map: map,
-      title: '동서울웨딩컨벤션',
+      title: "동서울웨딩컨벤션",
     });
 
     // 정보창 생성
@@ -55,7 +55,7 @@ const NaverMap = () => {
     });
 
     // 마커 클릭 시 정보창 표시/숨김
-    window.naver.maps.Event.addListener(marker, 'click', () => {
+    window.naver.maps.Event.addListener(marker, "click", () => {
       if (infoWindow.getMap()) {
         infoWindow.close();
       } else {
@@ -64,7 +64,7 @@ const NaverMap = () => {
     });
 
     // 지도 클릭 시 정보창 닫기
-    window.naver.maps.Event.addListener(map, 'click', () => {
+    window.naver.maps.Event.addListener(map, "click", () => {
       infoWindow.close();
     });
 
@@ -80,7 +80,7 @@ const NaverMap = () => {
       <div
         ref={mapRef}
         className="w-full h-80 rounded-lg shadow-lg"
-        style={{ minHeight: '320px' }}
+        style={{ minHeight: "320px" }}
       />
     </div>
   );
