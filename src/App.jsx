@@ -24,6 +24,16 @@ function App() {
   const [showGroomAccounts, setShowGroomAccounts] = useState(false);
   const [showBrideAccounts, setShowBrideAccounts] = useState(false);
 
+  // 연락처 정보
+  const contacts = {
+    groom: "010-3050-6647", // 김병춘
+    bride: "010-8029-9721", // 황선호
+    groomFather: "010-7396-4450", // 김영호
+    groomMother: "010-7578-4450", // 최일순
+    brideFather: "010-5312-4815", // 황충길
+    brideMother: "010-4181-6714", // 김정하
+  };
+
   // 다크모드 방지 - 항상 라이트 모드로 강제
   useEffect(() => {
     // HTML 요소에 light 클래스 강제 추가
@@ -127,6 +137,18 @@ function App() {
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
     alert("계좌번호가 복사되었습니다.");
+  };
+
+  // 메시지 보내기 함수
+  const sendMessage = (phoneNumber) => {
+    const smsUrl = `sms:${phoneNumber}`;
+    window.location.href = smsUrl;
+  };
+
+  // 전화 걸기 함수
+  const makeCall = (phoneNumber) => {
+    const telUrl = `tel:${phoneNumber}`;
+    window.location.href = telUrl;
   };
 
   const openMap = (type) => {
@@ -283,7 +305,10 @@ function App() {
                   </div>
 
                   <div className="flex gap-4 justify-center">
-                    <button className="flex items-center justify-center bg-white transition-colors">
+                    <button
+                      onClick={() => sendMessage(contacts.groom)}
+                      className="flex items-center justify-center bg-white transition-colors hover:bg-gray-50"
+                    >
                       <LetterIcon
                         strokeColor="#8F9DCA"
                         borderColor="#BEC0DD"
@@ -291,7 +316,10 @@ function App() {
                         height={48}
                       />
                     </button>
-                    <button className="flex items-center justify-center bg-white transition-colors">
+                    <button
+                      onClick={() => makeCall(contacts.groom)}
+                      className="flex items-center justify-center bg-white transition-colors hover:bg-gray-50"
+                    >
                       <PhoneIcon
                         strokeColor="#8F9DCA"
                         borderColor="#BEC0DD"
@@ -308,7 +336,10 @@ function App() {
                   </div>
 
                   <div className="flex gap-4 justify-center">
-                    <button className=" flex items-center justify-center bg-white transition-colors">
+                    <button
+                      onClick={() => sendMessage(contacts.bride)}
+                      className="flex items-center justify-center bg-white transition-colors hover:bg-gray-50"
+                    >
                       <LetterIcon
                         strokeColor="#CA8F99"
                         borderColor="#DDBEBF"
@@ -316,7 +347,10 @@ function App() {
                         height={48}
                       />
                     </button>
-                    <button className=" flex items-center justify-center bg-white  transition-colors">
+                    <button
+                      onClick={() => makeCall(contacts.bride)}
+                      className="flex items-center justify-center bg-white transition-colors hover:bg-gray-50"
+                    >
                       <PhoneIcon
                         strokeColor="#CA8F99"
                         borderColor="#DDBEBF"
@@ -338,7 +372,10 @@ function App() {
                       <span className="font-bold text-primary-900">김영호</span>
                     </p>
                     <div className="flex gap-4 justify-center">
-                      <button className="flex items-center justify-center bg-white transition-colors">
+                      <button
+                        onClick={() => sendMessage(contacts.groomFather)}
+                        className="flex items-center justify-center bg-white transition-colors hover:bg-gray-50"
+                      >
                         <LetterIcon
                           strokeColor="#8F9DCA"
                           borderColor="#BEC0DD"
@@ -346,7 +383,10 @@ function App() {
                           height={48}
                         />
                       </button>
-                      <button className="flex items-center justify-center bg-white transition-colors">
+                      <button
+                        onClick={() => makeCall(contacts.groomFather)}
+                        className="flex items-center justify-center bg-white transition-colors hover:bg-gray-50"
+                      >
                         <PhoneIcon
                           strokeColor="#8F9DCA"
                           borderColor="#BEC0DD"
@@ -362,7 +402,10 @@ function App() {
                       <span className="font-bold text-primary-900">최일순</span>
                     </p>
                     <div className="flex gap-4 justify-center">
-                      <button className="flex items-center justify-center bg-white transition-colors">
+                      <button
+                        onClick={() => sendMessage(contacts.groomMother)}
+                        className="flex items-center justify-center bg-white transition-colors hover:bg-gray-50"
+                      >
                         <LetterIcon
                           strokeColor="#8F9DCA"
                           borderColor="#BEC0DD"
@@ -370,7 +413,10 @@ function App() {
                           height={48}
                         />
                       </button>
-                      <button className="flex items-center justify-center bg-white transition-colors">
+                      <button
+                        onClick={() => makeCall(contacts.groomMother)}
+                        className="flex items-center justify-center bg-white transition-colors hover:bg-gray-50"
+                      >
                         <PhoneIcon
                           strokeColor="#8F9DCA"
                           borderColor="#BEC0DD"
@@ -383,14 +429,17 @@ function App() {
                 </div>
 
                 <div className="flex flex-col flex-1 text-center gap-6">
-                  <p className="font-bold text-secondary-300">신부 측 혼주</p>
+                  <p className="font-bold text-[#A64B5A]">신부 측 혼주</p>
                   <div className="flex flex-col gap-3">
                     <p className="text-primary-900">
                       아버지{" "}
                       <span className="font-bold text-primary-900">황충길</span>
                     </p>
                     <div className="flex gap-4 justify-center">
-                      <button className="flex items-center justify-center bg-white transition-colors">
+                      <button
+                        onClick={() => sendMessage(contacts.brideFather)}
+                        className="flex items-center justify-center bg-white transition-colors hover:bg-gray-50"
+                      >
                         <LetterIcon
                           strokeColor="#CA8F99"
                           borderColor="#DDBEBF"
@@ -398,7 +447,10 @@ function App() {
                           height={48}
                         />
                       </button>
-                      <button className="flex items-center justify-center bg-white transition-colors">
+                      <button
+                        onClick={() => makeCall(contacts.brideFather)}
+                        className="flex items-center justify-center bg-white transition-colors hover:bg-gray-50"
+                      >
                         <PhoneIcon
                           strokeColor="#CA8F99"
                           borderColor="#DDBEBF"
@@ -414,7 +466,10 @@ function App() {
                       <span className="font-bold text-primary-900">김정하</span>
                     </p>
                     <div className="flex gap-4 justify-center">
-                      <button className="flex items-center justify-center bg-white transition-colors">
+                      <button
+                        onClick={() => sendMessage(contacts.brideMother)}
+                        className="flex items-center justify-center bg-white transition-colors hover:bg-gray-50"
+                      >
                         <LetterIcon
                           strokeColor="#CA8F99"
                           borderColor="#DDBEBF"
@@ -422,7 +477,10 @@ function App() {
                           height={48}
                         />
                       </button>
-                      <button className="flex items-center justify-center bg-white transition-colors">
+                      <button
+                        onClick={() => makeCall(contacts.brideMother)}
+                        className="flex items-center justify-center bg-white transition-colors hover:bg-gray-50"
+                      >
                         <PhoneIcon
                           strokeColor="#CA8F99"
                           borderColor="#DDBEBF"
