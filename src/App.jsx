@@ -13,6 +13,7 @@ import PhoneIcon from "./components/PhoneIcon";
 import ArrowDownIcon from "./components/ArrowDownIcon";
 import ArrowUpIcon from "./components/ArrowUpIcon";
 import Gallery from "./components/Gallery";
+import NaverMap from "./components/NaverMap";
 
 function App() {
   const [countdown, setCountdown] = useState({
@@ -507,12 +508,8 @@ function App() {
 
           {/* 지도 */}
           <div className="mb-9">
-            <div className="w-full h-48 bg-gray-300 rounded-xl mb-4">
-              <img
-                src={mapImage}
-                alt="Wedding Location"
-                className="w-full h-full object-cover rounded-xl"
-              />
+            <div className="w-full mb-4">
+              <NaverMap />
             </div>
 
             {/* 지도 버튼들 */}
