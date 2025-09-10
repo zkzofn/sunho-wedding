@@ -10,8 +10,11 @@ const NaverMap = () => {
       return;
     }
 
-    // 동서울웨딩컨벤션 좌표 (서울 중구 을지로6가)
-    const weddingHallPosition = new window.naver.maps.LatLng(37.5666102, 126.9783881);
+    // 동서울웨딩컨벤션 좌표
+    const weddingHallPosition = new window.naver.maps.LatLng(
+      37.4575233,
+      127.1282715
+    );
 
     // 지도 옵션 설정
     const mapOptions = {
